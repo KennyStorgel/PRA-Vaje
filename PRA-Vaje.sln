@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRA-Vaje3", "PRA-Vaje3\PRA-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRA-Vaje2", "PRA-Vaje2\PRA-Vaje2.csproj", "{10117A7D-0A28-E553-488C-A040A914F105}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRA-Vaje4", "PRA-Vaje4\PRA-Vaje4.csproj", "{4155A74A-E9DC-493C-BF02-FB9BE5999B7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku", "Sudoku\Sudoku.csproj", "{3359BC63-5D13-4ED2-959C-1ECC01865096}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{10117A7D-0A28-E553-488C-A040A914F105}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10117A7D-0A28-E553-488C-A040A914F105}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10117A7D-0A28-E553-488C-A040A914F105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4155A74A-E9DC-493C-BF02-FB9BE5999B7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4155A74A-E9DC-493C-BF02-FB9BE5999B7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4155A74A-E9DC-493C-BF02-FB9BE5999B7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4155A74A-E9DC-493C-BF02-FB9BE5999B7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3359BC63-5D13-4ED2-959C-1ECC01865096}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3359BC63-5D13-4ED2-959C-1ECC01865096}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3359BC63-5D13-4ED2-959C-1ECC01865096}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3359BC63-5D13-4ED2-959C-1ECC01865096}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
