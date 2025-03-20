@@ -14,14 +14,36 @@
                                                 {0, 3, 2, 0, 0, 0, 0, 6, 0 }
                                             };
 
+        public static bool[,] lahkoSpremenim = new bool[9, 9];
+
         static void Main(string[] args)
         {
+            NadzorMoznihSprememb();
             while (JeKonec() == false) 
             {
                 Izpis();
-                VnosVrednosti();
+                if (!VnosVrednosti()) 
+                {
+                    Console.WriteLine("Prekinjam igro!");
+                    return;
+                }
+                
             }
             Console.WriteLine("Zmagali ste!");
+        }
+
+        public static void NadzorMoznihSprememb() 
+        {
+            for (int i = 0; i < 9; i++) 
+            {
+                for (int j = 0; j < 9; j++) 
+                {
+                    if (igralnoPolje[i, j] == 0) 
+                    {
+                        lahkoSpremenim[i, j] = true;
+                    }
+                }
+            }
         }
 
         public static bool JeKonec() 
@@ -39,9 +61,10 @@
             return true; // vse je pravilno izpolnjeno
         }
 
-        public static void VnosVrednosti() 
+        public static bool VnosVrednosti() 
         {
-            Console.WriteLine("Vnesi vrstico, stolpec in vrednost (locene le s presledkom)");
+            Console.WriteLine("Vnesi vrstico (1-9), stolpec (1-9) in vrednost (1-9) (locene le s presledkom).");
+            Console.WriteLine("Vrednost 0 izbrise vnos, vrednost -1 prekine igranje.");
             string vnos = Console.ReadLine();
             string[] podatki = vnos.Split(' ');
 
@@ -49,15 +72,29 @@
             int stolpec = int.Parse(podatki[1]);
             int vrednost = int.Parse(podatki[2]);
 
+            if (vrednost == -1) 
+            {
+                return false;
+            }
+
+            if (vrednost == 0 && lahkoSpremenim[vrstica - 1, stolpec - 1]) 
+            {
+                igralnoPolje[vrstica - 1, stolpec - 1] = 0;
+            }
             // če ni konflikta vpiši vrednost
-            if (PreveriVnos(vrstica, stolpec, vrednost))
+            else if (lahkoSpremenim[vrstica - 1, stolpec - 1] && PreveriVnos(vrstica, stolpec, vrednost))
             {
                 igralnoPolje[vrstica - 1, stolpec - 1] = vrednost;
             }
-            else 
+            else if (!lahkoSpremenim[vrstica - 1, stolpec - 1]) 
+            {
+                Console.WriteLine("Ne morete spreminjati začetnih vrednosti!");
+            }
+            else
             {
                 Console.WriteLine("Vrednost je že v stolpcu/vrstici/škatli");
             }
+            return true;
         }
 
         // stolpec in vrstica med 1 in 9
@@ -124,10 +161,6 @@
             return true;
         }
 
-        /*
-         * S tem ukazom spremenimo barvo pisave v terminalu (konzoli)
-         * Console.ForegroundColor = ConsoleColor.Red;
-        */
         public static void Izpis() 
         {
             for (int i = 0; i < 9; i++) 
@@ -138,7 +171,13 @@
                     {
                         Console.Write(". ");
                     }
-                    else 
+                    else if (!lahkoSpremenim[i, j]) 
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write(igralnoPolje[i, j] + " ");
+                        Console.ResetColor();
+                    }
+                    else
                     {
                         Console.Write(igralnoPolje[i, j] + " ");
                     }
